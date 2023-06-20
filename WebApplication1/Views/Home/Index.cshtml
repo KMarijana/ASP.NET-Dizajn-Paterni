@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Obaveštenje</h1>
+</div>
+<hr />
+<div class="row border-bottom border-info">
+    <div class="col-md-4 bg-light p-3">
+        <h2>@ViewBag.Student</h2>
+        <br />
+        <td class="text-center"><a asp-controller="Studenti" asp-action="Index" class="btn btn-primary">Prikaži sve Studente</a></td>
+    </div>
+    <div class="col-md-4 p-3">
+        <h2>@ViewBag.Predmet</h2>
+        <br />
+        <td class="text-center"><a asp-controller="Predmeti" asp-action="Index" class="btn btn-secondary">Prikaži</a></td>
+    </div>
+    <div class="col-md-4 bg-light p-3">
+        <h2>@ViewBag.Polaganja</h2>
+        <br />
+        <td class="text-center"><a asp-controller="Polaganja" asp-action="Index" class="btn btn-success">Prikaži</a></td>
+    </div>
+
+    
+</div>

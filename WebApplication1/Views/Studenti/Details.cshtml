@@ -1,0 +1,71 @@
+﻿@model WebApplication1.Models.Student
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalji</h1>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BrojIndexa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BrojIndexa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Polaganja)
+        </dt>
+        <dd class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>Naziv predmeta</th>
+                    <th>Datum polaganja</th>
+                    <th>Broj bodova</th>
+                    <th>Ocena</th>
+                </tr>
+                @foreach (var item in Model.Polaganja)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Predmet.Naziv)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DatumPolaganja)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Predmet.Bodovi)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ocena)
+                        </td>
+                    </tr>
+                }
+            </table>
+            
+            <p>
+                Ukupan broj bodova: @(Model.Polaganja.Sum(x=>x.Predmet.Bodovi))
+            </p>
+               
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.StudentID">Izmeni</a> |
+    <a asp-action="Index">Nazad</a>
+</div>

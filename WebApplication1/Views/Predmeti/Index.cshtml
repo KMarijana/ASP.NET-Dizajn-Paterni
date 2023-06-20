@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplication1.Models.Predmet>
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<h2>Predmeti</h2>
+
+<p>
+    <a asp-action="Create">Kreiraj novi</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PredmetID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Naziv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bodovi)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PredmetID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Naziv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bodovi)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PredmetID">Izmeni</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PredmetID">Obriši</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
